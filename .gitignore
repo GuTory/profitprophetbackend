@@ -1,5 +1,8 @@
 node_modules
 
-.idea
+.idea/*
 
 dist
+
+transformed_data/*
+data/*
