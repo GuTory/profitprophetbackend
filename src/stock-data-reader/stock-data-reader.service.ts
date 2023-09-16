@@ -9,7 +9,7 @@ export class StockDataReaderService {
     return new Promise<string>((resolve, reject) => {
       const pythonFunction = spawn(
         'python',
-        ['./src/stock-metadata-reader.py'],
+        ['./src/stock-metadata-mapper.py'],
         {
           stdio: 'pipe',
         },
@@ -29,7 +29,7 @@ export class StockDataReaderService {
       });
     });
     /*
-    const pythonFunction = spawn('python', ['./src/stock-metadata-reader.py']);
+    const pythonFunction = spawn('python', ['./src/stock-metadata-mapper.py']);
     pythonFunction.stdout.on('data', (data) => {
       this.pythonMessage = data.toString();
       console.log(`stdout: ${data}`);

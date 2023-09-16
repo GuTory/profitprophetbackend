@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { StockDataReaderService } from './stock-data-reader/stock-data-reader.service';
+import { StockDataReaderService } from '../stock-data-reader/stock-data-reader.service';
 
 @Controller()
 export class AppController {

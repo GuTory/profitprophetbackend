@@ -1,5 +1,6 @@
 import csv
 import json
+import os
 
 # Nasdaq Traded,
 # Symbol,
@@ -58,7 +59,13 @@ try:
 except FileNotFoundError:
     print("oops, file not found")
 
-print("[", end='')
-for stock in stocks:
-    print(json.dumps(stock.__dict__) + ',')
-print("]", end='')
+path = '.\\transformed_data'
+isExist = os.path.exists(path)
+if not isExist:
+    os.mkdir('.\\transformed_data')
+
+with open('.\\transformed_data\\symbols_valid_meta.json', 'w') as out_file:
+    out_file.write("[")
+    for stock in stocks:
+        out_file.write(json.dumps(stock.__dict__, indent=4) + ', ')
+    out_file.write("]")

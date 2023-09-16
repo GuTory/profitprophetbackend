@@ -8,8 +8,11 @@
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/sonarlint" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/codeStyles" />
+      <excludeFolder url="file://$MODULE_DIR$/data/etfs" />
+      <excludeFolder url="file://$MODULE_DIR$/data/stocks" />
       <excludeFolder url="file://$MODULE_DIR$/transformed_data/etfs" />
       <excludeFolder url="file://$MODULE_DIR$/transformed_data/stocks" />
+      <excludeFolder url="file://$MODULE_DIR$/data/.ipynb_checkpoints" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -6,3 +6,4 @@ dist
 
 transformed_data/*
 data/*
+src/environments/*
