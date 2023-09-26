@@ -4,6 +4,4 @@ node_modules
 
 dist
 
-transformed_data/*
-data/*
-src/environments/*
+assets

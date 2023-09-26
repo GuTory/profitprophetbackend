@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "paths": {
+      "@jsondata/*" : ["./transformed_data/*"]
+    },
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
