@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FirebaseService } from '../firebase/firebase.service';
-import { collection, Firestore, getDocs } from 'firebase/firestore';
+import { Firestore } from 'firebase-admin/firestore';
 
 @Injectable()
 export class AppService {
@@ -9,9 +9,10 @@ export class AppService {
     this.db = firebaseService.getFirestore();
   }
   async getAllStocks() {
-    const stocksRef = collection(this.db, 'stocks');
-    const stocksSnapshot = await getDocs(stocksRef);
-    console.log(stocksSnapshot.docs.map((doc) => doc.data()));
+    const stocksRef = await this.db.collection('stocks').get();
+    stocksRef.forEach((doc) => {
+      console.log(doc.id, '=>', doc.data());
+    });
     return 'got the stock data';
   }
 }

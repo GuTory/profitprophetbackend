@@ -12,6 +12,7 @@ export class StockController {
   @Get(':ticker')
   getStockByTicker(@Param('ticker') ticker: string): JSON {
     try {
+      console.log('getting ' + ticker);
       return JSON.parse(
         fs.readFileSync('./assets/stocks/' + ticker + '.json', 'utf-8'),
       );

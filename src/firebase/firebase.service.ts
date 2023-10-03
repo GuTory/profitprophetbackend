@@ -1,12 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { FirebaseOptions, initializeApp } from 'firebase/app';
-import { Firestore, getFirestore } from 'firebase/firestore';
+import * as credentials from '../environments/serviceAccountKeys.json';
+import { Firestore, getFirestore } from 'firebase-admin/firestore';
 import { environment } from 'src/environments/environment';
+import * as admin from 'firebase-admin';
+
+// https://firebase.google.com/docs/firestore/quickstart#node.js
 
 @Injectable()
 export class FirebaseService {
   // https://firebase.google.com/docs/web/setup#available-libraries
-  private firebaseConfig: FirebaseOptions = {
+  private firebaseConfig = {
     apiKey: environment.apiKey,
     authDomain: environment.authDomain,
     projectId: environment.projectId,
@@ -19,7 +22,10 @@ export class FirebaseService {
 
   constructor() {
     // Initialize Firebase
-    const firebaseApp = initializeApp(this.firebaseConfig);
+    let keys: admin.ServiceAccount = {};
+    const firebaseApp = admin.initializeApp({
+      credential: admin.credential.cert(credentials as admin.ServiceAccount),
+    });
     this.firestore = getFirestore(firebaseApp);
   }
   getFirestore(): Firestore {
