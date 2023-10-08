@@ -1,21 +1,20 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { OneTimeService } from '../one-time/one-time.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private onetime: OneTimeService,
-  ) {}
+  constructor(private readonly appService: AppService) {}
 
   @Get('')
-  async getHello(): Promise<string> {
-    return await this.appService.getAllStocks();
+  getHello(): string {
+    return 'hello';
   }
 
-  @Get('publish')
-  async publishAllStocks(): Promise<string> {
-    return await this.onetime.publishAllStocks();
-  }
+  /*
+   * Deprecated API because it is needed only once for the initial data load to Firestore.
+   * @Post('publish')
+   *   async publishAllStocks(): Promise<string> {
+   *     return await this.onetime.publishAllStocks();
+   * }
+   */
 }
