@@ -12,6 +12,7 @@ import {
   query,
   startAfter,
   where,
+  limitToLast,
 } from '@firebase/firestore';
 
 type StockQuery = Query<StockMeta, DocumentData>;
@@ -19,7 +20,7 @@ type StockQuery = Query<StockMeta, DocumentData>;
 @Injectable()
 export class StockService {
   private readonly collection;
-  private pageSize = 3;
+  private pageSize = 5;
   private firstStock: any;
   private lastStock: any;
 
@@ -64,7 +65,7 @@ export class StockService {
     const q: StockQuery = query(
       this.collection,
       orderBy('Symbol'),
-      limit(this.pageSize),
+      limitToLast(this.pageSize),
       endBefore(this.firstStock),
     );
     return await this.executeQueryAndConvertToModel(q);
@@ -76,9 +77,9 @@ export class StockService {
     let index = 0;
     stockDocs.forEach((doc) => {
       if (index === 0) {
-        this.firstStock = doc.data();
+        this.firstStock = doc;
       } else if (index === this.pageSize - 1) {
-        this.lastStock = doc.data();
+        this.lastStock = doc;
       }
       index++;
       stocks.push({ Id: doc.id, ...(doc.data() as StockMeta) } as StockMeta);
