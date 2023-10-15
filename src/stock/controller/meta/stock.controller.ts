@@ -1,6 +1,6 @@
 import { BadRequestException, Controller, Get, Param } from '@nestjs/common';
-import { StockService } from '../service/stock.service';
-import { StockMeta } from '../../models/stock.meta';
+import { StockService } from '../../service/stock.service';
+import { Stock } from '../../model/stock';
 
 @Controller('stockmeta')
 export class StockController {
@@ -8,10 +8,7 @@ export class StockController {
 
   @Get('/search/:ticker')
   async getStockByTicker(@Param('ticker') ticker: string) {
-    return (
-      (await this.StockService.getStockByTicker(ticker)) ??
-      new BadRequestException('No stock found with this symbol')
-    );
+    return await this.StockService.getStockByTicker(ticker);
   }
 
   @Get('page/')
@@ -21,7 +18,7 @@ export class StockController {
 
   @Get('page/:direction')
   async getStocksByDirection(@Param('direction') direction: 'next' | 'prev') {
-    let res: StockMeta[] = [];
+    let res: Stock[] = [];
     switch (direction) {
       case 'next':
         res = await this.StockService.getStocksByNextPage();

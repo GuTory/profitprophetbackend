@@ -10,7 +10,7 @@ export class AppController {
     return 'hello';
   }
 
-  /*
+  /**
    * Deprecated API because it is needed only once for the initial data load to Firestore.
    * @Post('publish')
    *   async publishAllStocks(): Promise<string> {
