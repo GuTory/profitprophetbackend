@@ -21,8 +21,12 @@ export class AuthService {
   }
 
   async authenticateUser(user: UserInterface): Promise<UserInterface | null> {
-    if (this.isAuthenticated && this.currentUser) return this.currentUser;
-    console.log('user is being consumed: ', user);
+    if (
+      this.isAuthenticated &&
+      this.currentUser &&
+      this.currentUser.email === user.email
+    )
+      return this.currentUser;
     let resUser: UserInterface | null = null;
     const q = query(
       this.collection,
