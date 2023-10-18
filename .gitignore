@@ -1,9 +1,9 @@
 node_modules
 
-.idea/*
+.idea
 
 dist
 
 assets
 archive
-.idea/profitprophetbackend.iml
+environments

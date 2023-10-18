@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Stock } from '../model/stock';
-import { FirebaseService } from '../../auth/service/firebase/firebase.service';
+import { FirebaseService } from '../../common/service/firebase/firebase.service';
 import { DocumentData } from 'firebase-admin/firestore';
 import {
   collection,

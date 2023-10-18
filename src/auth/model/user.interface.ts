@@ -13,4 +13,5 @@ export interface UserInterface {
 
   // custom fields
   subscription: 'Basic' | 'Pro';
+  favoriteStocks: string[];
 }

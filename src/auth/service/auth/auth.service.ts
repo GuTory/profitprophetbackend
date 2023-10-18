@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FirebaseService } from '../firebase/firebase.service';
+import { FirebaseService } from '../../../common/service/firebase/firebase.service';
 import {
   addDoc,
   collection,
@@ -21,12 +21,6 @@ export class AuthService {
   }
 
   async authenticateUser(user: UserInterface): Promise<UserInterface | null> {
-    if (
-      this.isAuthenticated &&
-      this.currentUser &&
-      this.currentUser.email === user.email
-    )
-      return this.currentUser;
     let resUser: UserInterface | null = null;
     const q = query(
       this.collection,
