@@ -9,6 +9,8 @@ import { AuthController } from './auth/controller/auth.controller';
 import { AuthService } from './auth/service/auth/auth.service';
 import { FavoriteController } from './operation/controller/favorite.controller';
 import { FavoriteService } from './operation/service/favorite.service';
+import { PredictionController } from './prediction/prediction.controller';
+import { PredictionService } from './prediction/prediction.service';
 
 @Module({
   controllers: [
@@ -17,6 +19,7 @@ import { FavoriteService } from './operation/service/favorite.service';
     StockHistoryController,
     AuthController,
     FavoriteController,
+    PredictionController,
   ],
   imports: [],
   providers: [
@@ -25,6 +28,7 @@ import { FavoriteService } from './operation/service/favorite.service';
     StockService,
     AuthService,
     FavoriteService,
+    PredictionService,
   ],
 })
 export class AppModule {}

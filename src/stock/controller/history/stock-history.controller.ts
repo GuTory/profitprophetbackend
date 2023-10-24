@@ -7,7 +7,7 @@ export class StockHistoryController {
   getStockByTicker(@Param('ticker') ticker: string): JSON {
     try {
       return JSON.parse(
-        fs.readFileSync('./assets/stocks/' + ticker + '.json', 'utf-8'),
+        fs.readFileSync('./data/stocks/' + ticker + '.json', 'utf-8'),
       );
     } catch (err) {
       throw new NotFoundException({ errorMessage: 'Ticker not found' });
