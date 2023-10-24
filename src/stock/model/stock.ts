@@ -1,4 +1,4 @@
-export class StockMeta {
+export class Stock {
   Id: string;
   MarketCategory: string;
   NextShares: string;

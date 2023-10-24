@@ -1,7 +1,10 @@
 node_modules
 
-.idea/*
+.idea
 
 dist
 
-assets
+data
+archive
+environments
+python/data

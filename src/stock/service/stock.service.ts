@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { StockMeta } from '../../models/stock.meta';
-import { FirebaseService } from '../../firebase/firebase.service';
+import { Stock } from '../model/stock';
+import { FirebaseService } from '../../common/service/firebase/firebase.service';
 import { DocumentData } from 'firebase-admin/firestore';
 import {
   collection,
@@ -15,7 +15,7 @@ import {
   limitToLast,
 } from '@firebase/firestore';
 
-type StockQuery = Query<StockMeta, DocumentData>;
+type StockQuery = Query<Stock, DocumentData>;
 
 @Injectable()
 export class StockService {
@@ -28,16 +28,17 @@ export class StockService {
     this.collection = collection(firebaseService.getFirestore(), 'stocks');
   }
 
-  async getStockByTicker(ticker: string): Promise<StockMeta | null> {
+  async getStockByTicker(ticker: string): Promise<Stock | []> {
+    if (ticker === '') return [];
     const q: StockQuery = query(
       this.collection,
       where('Symbol', '==', ticker.toUpperCase()),
       limit(1),
     );
     const stockByTicker = await getDocs(q);
-    let res: StockMeta | null = null;
+    let res: Stock | null = null;
     stockByTicker.forEach((doc) => {
-      res = new StockMeta(doc.id, doc.data());
+      res = new Stock(doc.id, doc.data());
     });
     return res;
   }
@@ -73,7 +74,7 @@ export class StockService {
 
   private async executeQueryAndConvertToModel(q: StockQuery) {
     const stockDocs = await getDocs(q);
-    const stocks: StockMeta[] = [];
+    const stocks: Stock[] = [];
     let index = 0;
     stockDocs.forEach((doc) => {
       if (index === 0) {
@@ -82,7 +83,7 @@ export class StockService {
         this.lastStock = doc;
       }
       index++;
-      stocks.push({ Id: doc.id, ...(doc.data() as StockMeta) } as StockMeta);
+      stocks.push({ Id: doc.id, ...(doc.data() as Stock) } as Stock);
     });
     return stocks;
   }
