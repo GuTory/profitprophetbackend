@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { FirebaseService } from '../../../common/service/firebase/firebase.service';
 import {
+  DocumentData,
+  FirestoreDataConverter,
   addDoc,
   collection,
   getDocs,
@@ -10,6 +12,17 @@ import {
 } from '@firebase/firestore';
 import { UserInterface } from '../../model/user.interface';
 
+const UserInterfaceConverter: FirestoreDataConverter<UserInterface> = {
+  toFirestore: (user: UserInterface): DocumentData => {
+    console.log(user);
+    return { ...user };
+  },
+  fromFirestore: (docSnap) => {
+    console.log(docSnap);
+    return docSnap.data() as UserInterface;
+  },
+};
+
 @Injectable()
 export class AuthService {
   private readonly collection;
@@ -17,7 +30,10 @@ export class AuthService {
   private currentUser: UserInterface | null = null;
 
   constructor(private firebaseService: FirebaseService) {
-    this.collection = collection(firebaseService.getFirestore(), 'users');
+    this.collection = collection(
+      firebaseService.getFirestore(),
+      'users',
+    ).withConverter(UserInterfaceConverter);
   }
 
   async authenticateUser(user: UserInterface): Promise<UserInterface | null> {

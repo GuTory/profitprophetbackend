@@ -9,8 +9,8 @@ import { AuthController } from './auth/controller/auth.controller';
 import { AuthService } from './auth/service/auth/auth.service';
 import { FavoriteController } from './operation/controller/favorite.controller';
 import { FavoriteService } from './operation/service/favorite.service';
-import { PredictionController } from './prediction/prediction.controller';
-import { PredictionService } from './prediction/prediction.service';
+import { PredictionController } from './prediction/controller/prediction.controller';
+import { PredictionService } from './prediction/service/prediction.service';
 
 @Module({
   controllers: [

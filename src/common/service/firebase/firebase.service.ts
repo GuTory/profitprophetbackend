@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, Firestore } from 'firebase/firestore';
 import { environment } from '../../../../environments/environment';
-// import * as admin from 'firebase-admin';
 
 @Injectable()
 export class FirebaseService {
