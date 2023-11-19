@@ -7,7 +7,7 @@ import {
   where,
 } from '@firebase/firestore';
 import { Injectable } from '@nestjs/common';
-import { FirebaseService } from 'src/common/service/firebase/firebase.service';
+import { FirebaseService } from '../../common/service/firebase/firebase.service';
 import { UserInterface } from '../../auth/model/user.interface';
 import { AuthService } from '../../auth/service/auth/auth.service';
 

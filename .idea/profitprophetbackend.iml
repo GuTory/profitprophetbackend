@@ -25,6 +25,7 @@
       <excludeFolder url="file://$MODULE_DIR$/python/data" />
       <excludeFolder url="file://$MODULE_DIR$/python/etfs" />
       <excludeFolder url="file://$MODULE_DIR$/python/stocks" />
+      <excludeFolder url="file://$MODULE_DIR$/coverage" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.7" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
