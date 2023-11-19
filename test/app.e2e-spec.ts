@@ -15,10 +15,12 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
+  it('/stockmeta/search/HPQ Ticker search (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+      .get('/api/stockmeta/search/AAPL')
+      .expect(200);
+  });
+  it('/stockmeta/page Pagination (GET)', () => {
+    return request(app.getHttpServer()).get('/api/stockmeta/page').expect(200);
   });
 });

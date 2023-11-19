@@ -27,7 +27,9 @@ export class StockService {
   constructor(private firebaseService: FirebaseService) {
     this.collection = collection(firebaseService.getFirestore(), 'stocks');
   }
-
+  getPageSize() {
+    return this.pageSize;
+  }
   async getStockByTicker(ticker: string): Promise<Stock | []> {
     if (ticker === '') return [];
     const q: StockQuery = query(
