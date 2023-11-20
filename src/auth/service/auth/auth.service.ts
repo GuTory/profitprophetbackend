@@ -14,11 +14,9 @@ import { UserInterface } from '../../model/user.interface';
 
 const UserInterfaceConverter: FirestoreDataConverter<UserInterface> = {
   toFirestore: (user: UserInterface): DocumentData => {
-    console.log(user);
     return { ...user };
   },
   fromFirestore: (docSnap) => {
-    console.log(docSnap);
     return docSnap.data() as UserInterface;
   },
 };
@@ -76,7 +74,7 @@ export class AuthService {
     return this.currentUser;
   }
 
-  getIsAuthenticated() {
+  IsAuthenticated() {
     return this.isAuthenticated;
   }
 }
