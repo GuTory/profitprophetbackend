@@ -15,4 +15,8 @@ describe('FirebaseService', () => {
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
+  it('should have Firestore prepared', () => {
+    expect(service.getFirestore()).toBeDefined();
+    expect(service.getFirestore()).not.toBeNull();
+  });
 });

@@ -9,7 +9,6 @@ export class AuthController {
   public async authenticateUser(@Body() user: UserInterface) {
     return await this.authService.authenticateUser(user);
   }
-  // TODO: EZ a jó logout?
   @Post('/logout')
   public async logout(@Body() user: UserInterface) {
     return await this.authService.logout(user);

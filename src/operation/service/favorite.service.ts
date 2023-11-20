@@ -25,7 +25,7 @@ export class FavoriteService {
     const fetchedUser = await this.getUser(user);
     await fetchedUser.forEach(async (doc) => {
       if ((doc.data() as UserInterface).favoriteStocks.includes(StockAdded)) {
-        return;
+        return await this.authService.authenticateUser(user);
       }
       updateDoc(doc.ref, {
         favoriteStocks: [
