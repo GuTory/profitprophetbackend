@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FavoriteService } from './favorite.service';
-import { FirebaseService } from '../../common/service/firebase/firebase.service';
-import { AuthService } from '../../auth/service/auth/auth.service';
-import { UserInterface } from '../../auth/model/user.interface';
+import { FirebaseService } from '../../../common/service/firebase/firebase.service';
+import { AuthService } from '../../../auth/service/auth/auth.service';
+import { UserInterface } from '../../../auth/model/user.interface';
 
 describe('FavoriteService', () => {
   let favoriteService: FavoriteService;

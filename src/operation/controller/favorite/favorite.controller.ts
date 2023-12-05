@@ -1,6 +1,6 @@
 import { Body, Controller, Param, Put } from '@nestjs/common';
-import { FavoriteService } from '../service/favorite.service';
-import { UserInterface } from 'src/auth/model/user.interface';
+import { FavoriteService } from '../../service/favorite/favorite.service';
+import { UserInterface } from '../../../auth/model/user.interface';
 
 @Controller('operation')
 export class FavoriteController {

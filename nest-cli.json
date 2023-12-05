@@ -3,6 +3,10 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
+    "outdir": "./dist",
+    "rootDir": "./",
     "deleteOutDir": true
-  }
+  },
+  "include": ["src/**/*.ts", "python/", "data/"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FavoriteController } from './favorite.controller';
-import { FavoriteService } from '../service/favorite.service';
-import { FirebaseService } from '../../common/service/firebase/firebase.service';
-import { AuthService } from '../../auth/service/auth/auth.service';
+import { FavoriteService } from '../../service/favorite/favorite.service';
+import { FirebaseService } from '../../../common/service/firebase/firebase.service';
+import { AuthService } from '../../../auth/service/auth/auth.service';
 
 describe('FavoriteController', () => {
   let controller: FavoriteController;

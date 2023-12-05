@@ -12,6 +12,7 @@ export interface UserInterface {
   response: any;
 
   // custom fields
+  balance: number;
   subscription: 'Basic' | 'Pro';
   favoriteStocks: string[];
 }
